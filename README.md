@@ -1,6 +1,10 @@
 # PHP SSD1306 Extension
 
+## 🎉 **Official Release v1.0.0 Available!**
+
 A comprehensive PHP extension for controlling SSD1306 OLED displays via I2C communication, specifically designed for **NVIDIA Jetson Orin devices** compatible with the [Yahboom Jetson Nano CUBE case](https://www.yahboom.net/study/CUBE_NANO) form factor. This extension provides a complete API for display initialization, pixel manipulation, graphics drawing, text rendering, and scrolling effects.
+
+**✨ Version 1.0.0** includes precompiled binaries and optimized installation for **NVIDIA Jetson Orin Nano** running **Ubuntu 22.04.5 LTS** with **PHP 8.4.12**.
 
 ## Features
 
@@ -37,6 +41,48 @@ sudo apt install php8.4-fpm php8.4-cli php8.4-dev php8.4-common \
 # Verify you're using system PHP
 which php  # Should show /usr/bin/php, not herd-lite path
 php --version  # Should show PHP 8.4.x without warnings
+```
+
+## 🚀 Quick Installation (v1.0.0)
+
+### One-Command Installation for Jetson Orin Nano
+
+For **NVIDIA Jetson Orin Nano** with **Ubuntu 22.04.5 LTS**:
+
+```bash
+# Check system compatibility first (optional)
+curl -fsSL https://github.com/projectsaturnstudios/adafruit_ssd1306-php/raw/v1.0.0/validate-system.sh | bash
+
+# Install SSD1306 extension (recommended)
+curl -fsSL https://github.com/projectsaturnstudios/adafruit_ssd1306-php/raw/v1.0.0/install-jetson-orin.sh | bash
+```
+
+The installation script will:
+- ✅ Install PHP 8.4.x if needed
+- ✅ Install all build dependencies
+- ✅ Configure I2C permissions
+- ✅ Build and install the extension
+- ✅ Create hardware test script
+- ✅ Verify installation
+
+### Manual Installation
+
+```bash
+# Install dependencies
+sudo apt update
+sudo apt install -y php8.4-dev i2c-tools libi2c-dev build-essential
+
+# Clone and build
+git clone https://github.com/projectsaturnstudios/adafruit_ssd1306-php.git
+cd adafruit_ssd1306-php
+git checkout v1.0.0
+phpize
+./configure --enable-ssd1306
+make && sudo make install
+
+# Configure PHP
+echo "extension=ssd1306" | sudo tee /etc/php/8.4/mods-available/ssd1306.ini
+sudo phpenmod ssd1306
 ```
 
 ## Installation
@@ -261,7 +307,21 @@ See the `examples/` directory for complete demonstrations:
 
 ## Testing
 
-Run the test suite:
+### Hardware Test Script
+
+After installation, test your hardware:
+
+```bash
+# Test with Yahboom CUBE (bus 7, address 0x3C)
+php /tmp/ssd1306_test.php
+
+# Test with custom I2C configuration
+php /tmp/ssd1306_test.php 1 0x3D
+```
+
+### Development Test Suite
+
+Run the development test suite:
 
 ```bash
 make test

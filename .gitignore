@@ -23,12 +23,11 @@ run-tests.php
 # PECL package
 *.tgz
 
-# Test files (development only)
+# Test files (development only - but keep release scripts)
 test_*.php
 *_test.php
 verify_*.php
 detect_*.php
-*.sh
 
 # IDE and editor files
 .vscode/
