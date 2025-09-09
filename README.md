@@ -41,26 +41,50 @@ php --version  # Should show PHP 8.4.x without warnings
 
 ## Installation
 
-### Via PECL (Recommended)
+### Method 1: Precompiled Binary (Jetson Orin Nano + PHP 8.4)
+
+**For NVIDIA Jetson Orin Nano with Ubuntu 22.04.5 LTS and PHP 8.4.12:**
 
 ```bash
-sudo pecl install ssd1306
+# Download the precompiled release
+wget https://github.com/projectsaturnstudios/adafruit_ssd1306-php/releases/download/v1.0.0/ssd1306-php-v1.0.0-jetson-orin-nano-php8.4.tar.gz
+
+# Extract and install
+tar -xzf ssd1306-php-v1.0.0-jetson-orin-nano-php8.4.tar.gz
+sudo cp ssd1306.so /usr/lib/php/20240924/
+echo "extension=ssd1306.so" | sudo tee -a /etc/php/8.4/cli/php.ini
+
+# Verify installation
+php -m | grep ssd1306
 ```
 
-Add to your php.ini:
-```ini
-extension=ssd1306
-```
-
-### Manual Installation
+### Method 2: Compile from Source
 
 ```bash
-git clone https://github.com/projectsaturnstudios/php-ssd1306.git
-cd php-ssd1306
+git clone https://github.com/projectsaturnstudios/adafruit_ssd1306-php.git
+cd adafruit_ssd1306-php
 phpize
 ./configure --enable-ssd1306
 make
 sudo make install
+
+# Add to php.ini
+echo "extension=ssd1306.so" | sudo tee -a /etc/php/8.4/cli/php.ini
+```
+
+### Method 3: PECL from Local Build
+
+```bash
+# First compile from source (Method 2), then create PECL package
+pecl package
+sudo pecl install ssd1306-1.0.0.tgz
+```
+
+### Method 4: Future PECL Repository (Coming Soon)
+
+```bash
+# This will be available once submitted to PECL
+sudo pecl install ssd1306
 ```
 
 ## Hardware Setup
