@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.10.12" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>ssd1306</name>
+ <channel>pecl.php.net</channel>
+ <summary>PHP extension for SSD1306 OLED displays</summary>
+ <description>
+  This extension provides PHP bindings for controlling SSD1306 OLED displays via I2C.
+  It offers a comprehensive API for display initialization, pixel manipulation, graphics
+  drawing, text rendering, and scrolling effects. Compatible with 128x64, 128x32, and
+  96x16 display sizes commonly used in embedded projects.
+  
+  Features:
+  - I2C communication with SSD1306 displays
+  - Pixel-level drawing operations
+  - Graphics primitives (lines, rectangles, circles)
+  - Text rendering with scalable fonts
+  - Display scrolling effects
+  - Multiple display size support
+  - Hardware abstraction for easy integration
+ </description>
+ <lead>
+  <name>Project Saturn Studios</name>
+  <user>projectsaturnstudios</user>
+  <email>info@projectsaturnstudios.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2025-01-09</date>
+ <time>02:00:00</time>
+ <version>
+  <release>1.0.0</release>
+  <api>1.0.0</api>
+ </version>
+ <stability>
+  <release>stable</release>
+  <api>stable</api>
+ </stability>
+ <license uri="http://www.php.net/license">PHP License</license>
+ <notes>
+  Initial stable release of SSD1306 PHP extension.
+  
+  Features:
+  - Complete SSD1306 display support
+  - I2C communication
+  - Graphics and text rendering
+  - Scrolling effects
+  - Multiple display sizes
+  - Comprehensive API documentation
+  
+  Requirements:
+  - PHP 7.4+ or PHP 8.x
+  - Linux with I2C support
+  - i2c-tools and libi2c-dev packages
+ </notes>
+ <contents>
+  <dir name="/">
+   <file md5sum="" name="config.m4" role="src" />
+   <file md5sum="" name="php_ssd1306.h" role="src" />
+   <file md5sum="" name="ssd1306.c" role="src" />
+   <file md5sum="" name="ssd1306_display.c" role="src" />
+   <file md5sum="" name="ssd1306_graphics.c" role="src" />
+   <dir name="tests">
+    <file md5sum="" name="001-basic.phpt" role="test" />
+    <file md5sum="" name="002-graphics.phpt" role="test" />
+    <file md5sum="" name="003-text.phpt" role="test" />
+    <file md5sum="" name="004-scrolling.phpt" role="test" />
+   </dir>
+   <dir name="examples">
+    <file md5sum="" name="basic_demo.php" role="doc" />
+    <file md5sum="" name="graphics_demo.php" role="doc" />
+    <file md5sum="" name="text_demo.php" role="doc" />
+    <file md5sum="" name="scroll_demo.php" role="doc" />
+   </dir>
+   <file md5sum="" name="README.md" role="doc" />
+   <file md5sum="" name="LICENSE" role="doc" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>7.4.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.10.0</min>
+   </pearinstaller>
+   <os>
+    <name>linux</name>
+   </os>
+  </required>
+ </dependencies>
+ <providesextension>ssd1306</providesextension>
+ <extsrcrelease>
+  <configureoption default="autodetect" name="enable-ssd1306" prompt="Enable SSD1306 OLED display support?" />
+ </extsrcrelease>
+ <changelog>
+  <release>
+   <version>
+    <release>1.0.0</release>
+    <api>1.0.0</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2025-01-10</date>
+   <license uri="http://www.php.net/license">PHP License</license>
+   <notes>
+    Initial stable release with complete SSD1306 support.
+   </notes>
+  </release>
+ </changelog>
+</package>

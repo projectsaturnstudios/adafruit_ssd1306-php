@@ -1,0 +1,42 @@
+# Build artifacts
+*.o
+*.lo
+*.la
+*.so
+*.dep
+.libs/
+modules/
+autom4te.cache/
+build/
+libtool
+Makefile
+Makefile.fragments
+Makefile.objects
+config.h
+config.h.in
+config.log
+config.nice
+config.status
+configure
+run-tests.php
+
+# PECL package
+*.tgz
+
+# Test files (development only)
+test_*.php
+*_test.php
+verify_*.php
+detect_*.php
+*.sh
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
